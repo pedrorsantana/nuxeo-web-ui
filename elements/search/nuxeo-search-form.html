@@ -698,6 +698,7 @@ limitations under the License.
           // if the view is not initialized yet, navigating to the search will trigger a search and display the results
           this.navigateTo('search', this.searchName);
         }
+        return Promise.resolve();
       },
 
       _reset: function() {
@@ -835,8 +836,21 @@ limitations under the License.
 
       _onError: function(e) {
         this.fire('notify', e.detail.error);
-      }
+      },
 
+      _loadSavedSearch: function(id) {
+        if (id) {
+          (!this.searches ? this.$['saved-searches'].get() : Promise.resolve()).then(function() {
+            this.selectedSearchIdx = this.searches.findIndex(function(s) {
+              return s.id === id;
+            }) + 1;
+            if (this.view) {
+              // XXX might produce double requests
+              this.view.fetch();
+            }
+          }.bind(this));
+        }
+      }
     });
   </script>
 </dom-module>
