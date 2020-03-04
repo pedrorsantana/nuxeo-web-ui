@@ -8,6 +8,7 @@ Feature: Edit metadata
     And I have a Workspace document
     And I have permission ReadWrite for this document
 
+  @watch
   Scenario Outline: Edit <doctype> metadata
     Given I have a <doctype> document
     When I browse to the document

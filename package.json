@@ -68,7 +68,7 @@
     "format": "npm run format:polymer && npm run format:prettier && npm run format:eslint",
     "win-format": "npm run win-format:polymer && npm run format:prettier && npm run format:eslint",
     "preinstall": "cd packages/nuxeo-web-ui-ftest && npm install",
-    "test": "node scripts/test-runner.js --report --screenshots --headless --tags='not @ignore'",
+    "test": "node scripts/test-runner.js --report --screenshots --headless --tags='@watch'",
     "test:dev": "node scripts/test-runner.js --nuxeoUrl=http://localhost:8080/nuxeo --url=http://localhost:5000/",
     "test:watch": "node scripts/test-runner.js --nuxeoUrl=http://localhost:8080/nuxeo  --url=http://localhost:5000/ --tags='@watch' --debug"
   },
