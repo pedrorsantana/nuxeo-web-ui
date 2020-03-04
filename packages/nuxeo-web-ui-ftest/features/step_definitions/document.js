@@ -178,11 +178,13 @@ Then(/^I can edit the following properties in the (.+) metadata:$/, function(doc
   const { browser } = this.ui;
   browser.editButton.waitForVisible();
   browser.editButton.click();
+  browser.waitForVisible('#edit-dialog nuxeo-document-form-layout');
   const form = browser.editForm(docType);
   form.waitForVisible();
   form.layout.waitForVisible();
   form.layout.fillMultipleValues(table);
   form.save();
+  driver.waitForExist('iron-overlay-backdrop', driver.options.waitForTimeout, true);
 });
 
 Then(/^I can edit the (.*) Note$/, function(format) {
